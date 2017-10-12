@@ -1,7 +1,12 @@
+.btn-secondary {
+  background: transparent;
+}
+
 .hover-target:hover i 
 {
  color: #222 !important;
 }
+
 h1,h2,h3,h4,h5,h6
 {
   font-weight:700;
@@ -13,6 +18,7 @@ h1,h2,h3,h4,h5,h6
 {
   color: steelblue!important
 }
+
 .text-secondary
 {
   color: white!important
@@ -27,7 +33,7 @@ body
 {
   overflow-x:hidden;
   font-family:'Roboto Slab','Helvetica Neue',Helvetica,Arial,sans-serif;
-  background-color: grey;
+  background-color: #212529;
 }
 
 p
@@ -59,6 +65,7 @@ ul.social-buttons
 {
   margin-bottom:0
 }
+
 ul.social-buttons li a
 {
   font-size:20px;
@@ -96,8 +103,28 @@ ul.social-buttons li a
   background-color:#222
 }
 
-
 .sample{
   display:none;
 }
 
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.modal-content {
+  background-color: #343a40;
+  color: white;
+}
+
+.dropdown-menu {
+  background-color: #343a40;
+  border: 1px #777 solid;
+}
+
+.dropdown-menu a {
+  color: white;
+}
