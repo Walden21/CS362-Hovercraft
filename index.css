@@ -8,25 +8,7 @@ h1,h2,h3,h4,h5,h6
   font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
   text-transform:uppercase
 }
-section
-{
-  padding:100px 0
-}
-section h2.section-heading
-{
-  font-size:40px;
-  margin-top:0;
-  margin-bottom:15px
-}
-section h3.section-subheading
-{
-  font-size:16px;
-  font-weight:400;
-  font-style:italic;
-  margin-bottom:75px;
-  text-transform:none;
-  font-family:'Droid Serif','Helvetica Neue',Helvetica,Arial,sans-serif
-}
+
 .text-primary
 {
   color: steelblue!important
@@ -40,25 +22,25 @@ section h3.section-subheading
 {
   color: black!important
 }
-section{
-  padding-top:3.5em;
-  height: calc(100%-3.5em);
-}
+
 body
 {
   overflow-x:hidden;
   font-family:'Roboto Slab','Helvetica Neue',Helvetica,Arial,sans-serif;
   background-color: grey;
 }
+
 p
 {
   line-height:1.75
 }
+
 footer
 {
   padding:25px 0;
   text-align:center
 }
+
 footer span.copyright
 {
   font-size:90%;
@@ -67,10 +49,12 @@ footer span.copyright
   font-family:Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
   text-transform:uppercase
 }
+
 ul.social-buttons li a:active,ul.social-buttons li a:focus,ul.social-buttons li a:hover
 {
   background-color:steelblue
 }
+
 ul.social-buttons
 {
   margin-bottom:0
@@ -90,10 +74,12 @@ ul.social-buttons li a
   outline:0;
   background-color:#222
 }
+
 l.social-buttons
 {
   margin-bottom:0
 }
+
 ul.social-buttons li a
 {
   font-size:20px;
@@ -109,17 +95,9 @@ ul.social-buttons li a
   outline:0;
   background-color:#222
 }
-.portfolio-modal .modal-content ul.list-inline
-{
-  margin-top:0;
-  margin-bottom:30px
-}
+
+
 .sample{
   display:none;
 }
-.dropdown-menu .divider {
-  height: 1px;
-  margin: 9px 0;
-  overflow: hidden;
-  background-color: #e5e5e5;
-} 
+
