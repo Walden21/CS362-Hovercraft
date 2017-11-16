@@ -8,10 +8,10 @@
 
 #define PIN_PSWD "1234" //be sure that pairings have different pins
 
-//#define HC06_ID "2016,12,128353" //result from AT+INQ in master node for pairing 1
+#define HC06_ID "2016,12,128353" //result from AT+INQ in master node for pairing 1
 //if result of AT+INQ is +INQ:2016:12:128353,1F00,7FFF, 
 //the ID is 2016,12,128353 (replace colons with commas)
-#define HC06_ID "2016,11,21314" //+INQ:2016:11:21314,1F00,7FFF for pairing two
+//#define HC06_ID "2016,11,21314" //+INQ:2016:11:21314,1F00,7FFF for pairing two
 
 #define MASTER_SPEED 38400 //default for HC-05
 #define SERVANT_SPEED 9600 //default for HC-06
@@ -41,7 +41,7 @@ void setup() {
   if(hasError(result, "")){
     return;
   }
-  result = initServant();
+//  result = initServant();
   if(hasError(result, "")){
     return;
   }
@@ -77,7 +77,8 @@ String initMaster(){
   }
 
   // Should respond with its version
-//  masterSend("AT+VERSION");
+  masterSend("AT+ORGL");
+  masterSend("AT+RESET");
 
   //init pin to 0000
   result = masterSend("AT+PSWD=" + String(PIN_PSWD));
@@ -133,6 +134,7 @@ String pair(String target){
   masterSend("AT+BIND=" + target);
   masterSend("AT+CMODE=1");
   masterSend("AT+LINK=" + target);
+  masterSend("AT+UART=" + String(SERVANT_SPEED) + ",1,2");
   return "";
 }
 
