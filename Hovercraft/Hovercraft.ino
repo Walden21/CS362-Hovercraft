@@ -3,6 +3,7 @@
 
 // servo circuit reference: http://www.ibrahimlabs.com/2013/08/how-to-interface-servo-motor-with-pic.html
 // servo code reference: https://www.arduino.cc/en/Tutorial/Knob
+// Electronic Speed Control (ESC) code based on http://www.instructables.com/id/ESC-Programming-on-Arduino-Hobbyking-ESC/
 
 // Pin 2 --> Bluetooth TX
 // Pin 3 --> Bluetooth RX
