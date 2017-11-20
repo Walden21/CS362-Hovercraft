@@ -1,13 +1,13 @@
 #include <SoftwareSerial.h>
 
-// Pin 4 --> Bluetooth TX
-// Pin 5 --> Bluetooth RX
-SoftwareSerial btModule(4, 5);
+// Pin 2 --> Bluetooth TX
+// Pin 3 --> Bluetooth RX
+SoftwareSerial btModule(2, 3);
 
 #define CONNECTION_RATE 9600 //rate of servant module
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(38400);
   btModule.begin(CONNECTION_RATE);
 
   // other init code go here

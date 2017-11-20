@@ -1,8 +1,8 @@
 #include <SoftwareSerial.h>
 
-// Pin 10 --> Bluetooth TX
-// Pin 11 --> Bluetooth RX
-SoftwareSerial btModule(10, 11);
+// Pin 2 --> Bluetooth TX
+// Pin 3 --> Bluetooth RX
+SoftwareSerial btModule(2, 3);
 
 #define CONNECTION_RATE 9600 //rate of servant module
 
