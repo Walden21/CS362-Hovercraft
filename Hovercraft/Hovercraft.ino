@@ -1,8 +1,15 @@
 #include <SoftwareSerial.h>
+#include <Servo.h>
+
+// servo circuit reference: http://www.ibrahimlabs.com/2013/08/how-to-interface-servo-motor-with-pic.html
+// servo code reference: https://www.arduino.cc/en/Tutorial/Knob
 
 // Pin 2 --> Bluetooth TX
 // Pin 3 --> Bluetooth RX
 SoftwareSerial btModule(2, 3);
+
+Servo backServo;
+const int SERVO_PIN = 4;
 
 #define CONNECTION_RATE 9600 //rate of servant module
 
@@ -12,7 +19,7 @@ void setup() {
   Serial.begin(38400);
   btModule.begin(CONNECTION_RATE);
 
-  // other init code go here
+  backServo.attach(SERVO_PIN);
   
   Serial.println("Ready");
 }
@@ -49,10 +56,14 @@ String decodeNumbers(String input){
 void handleThrottle(String input){
   input = decodeNumbers(input);
   int commaIndex = input.indexOf(',');
-  //x: -5 is left, 5 is right
-  //y: 5 is up, -5 is down
-  int x = input.substring(0, commaIndex).toInt() - 5;
-  int y = input.substring(commaIndex+1).toInt() - 5;
+  //x: -10 is left, 10 is right
+  //y: 10 is up, -10 is down
+  int x = input.substring(0, commaIndex).toInt() - 10;
+  int y = input.substring(commaIndex+1).toInt() - 10;
+
+  int mapX = map(x, -10, 10, 0, 180);
+  backServo.write(mapX);
+  
 
   Serial.println("Throttle params: " + input + "-> " + x + "," + y);
 }

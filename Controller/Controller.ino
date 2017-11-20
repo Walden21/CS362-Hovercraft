@@ -50,7 +50,7 @@ void sendFromSerial(){
 //reference: https://www.arduino.cc/reference/en/language/functions/math/map/
 //scale to 0-1 scale
 String scaleAnalog(int value){
-  int mappedValue = map(value, STICK_MIN, STICK_MAX, 0, 10);
+  int mappedValue = map(value, STICK_MIN, STICK_MAX, 0, 20);
   return String(mappedValue);
 }
 
