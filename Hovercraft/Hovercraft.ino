@@ -2,6 +2,7 @@
 #include <Servo.h>
 
 // servo circuit reference: http://www.ibrahimlabs.com/2013/08/how-to-interface-servo-motor-with-pic.html
+// -> Brown to ground, red to VCC (or nothing if independently powered), orange to data
 // servo code reference: https://www.arduino.cc/en/Tutorial/Knob
 // Electronic Speed Control (ESC) code based on http://www.instructables.com/id/ESC-Programming-on-Arduino-Hobbyking-ESC/
 
@@ -9,8 +10,10 @@
 // Pin 3 --> Bluetooth RX
 SoftwareSerial btModule(2, 3);
 
-Servo backServo;
-const int SERVO_PIN = 4;
+Servo backServo1;
+Servo backServo2;
+const int BACKSERVO1_PIN = 4;
+const int BACKSERVO2_PIN = 5;
 
 #define CONNECTION_RATE 9600 //rate of servant module
 
@@ -20,7 +23,8 @@ void setup() {
   Serial.begin(38400);
   btModule.begin(CONNECTION_RATE);
 
-  backServo.attach(SERVO_PIN);
+  backServo1.attach(BACKSERVO1_PIN);
+  backServo2.attach(BACKSERVO2_PIN);
   
   Serial.println("Ready");
 }
@@ -63,7 +67,8 @@ void handleThrottle(String input){
   int y = input.substring(commaIndex+1).toInt() - 10;
 
   int mapX = map(x, -10, 10, 0, 180);
-  backServo.write(mapX);
+  backServo1.write(mapX);
+  backServo2.write(180-mapX); //turn in opposite direction
   
 
   Serial.println("Throttle params: " + input + "-> " + x + "," + y);
