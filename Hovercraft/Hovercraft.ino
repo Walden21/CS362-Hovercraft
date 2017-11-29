@@ -15,8 +15,8 @@ SoftwareSerial btModule(2, 3);
 
 Servo backServo1;
 Servo backServo2;
-const int BACKSERVO1_PIN = 5;
-const int BACKSERVO2_PIN = 6;
+const int BACKSERVO1_PIN = 4;
+const int BACKSERVO2_PIN = 5;
 
 Servo thrustMotor, inflationMotor;
 const int THRUST_PIN = 9;
@@ -70,13 +70,6 @@ String decodeNumbers(String input){
   return s;
 }
 
-//speed range is 0 to 10, thrust range is 700 to 1500
-void setThrustSpeed(int speed){
-  int thrust = map(speed,0,10,700,1500);
-  Serial.println("Setting thrust to " + String(thrust));
-  thrustMotor.writeMicroseconds(thrust);
-}
-
 void handleThrottle(String input){
   input = decodeNumbers(input);
   int commaIndex = input.indexOf(',');
@@ -84,17 +77,21 @@ void handleThrottle(String input){
   //y: 10 is up, -10 is down
   int x = input.substring(0, commaIndex).toInt() - 10;
   int y = input.substring(commaIndex+1).toInt() - 10;
+  int thrust = map(y, 0, 10, 750, 1500);
 
-  int mapX = map(x, -10, 10,20, 160);
-  backServo1.write(mapX);
-  backServo2.write(mapX); //turn in opposite direction
-
+  int mapX = map(x, -10, 10, 20, 160);
+  backServo1.write(180 - mapX); //fixed servo directions.
+  backServo2.write(180 - mapX);
+  
   if(y > 0){
-    inflationMotor.writeMicroseconds(1500);
-    thrustMotor.writeMicroseconds(1500);
-  }else{
+    inflationMotor.writeMicroseconds(1600);
+    thrustMotor.writeMicroseconds(thrust);
+  }else if(y < 0){
     inflationMotor.writeMicroseconds(700);
     thrustMotor.writeMicroseconds(700);
+  } else {
+    inflationMotor.writeMicroseconds(700);
+    thrustMotor.writeMicroseconds(750);
   }
   
 
