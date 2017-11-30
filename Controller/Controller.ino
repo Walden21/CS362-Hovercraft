@@ -11,13 +11,16 @@ const int analogX_pin = 4; //VRy
 const int analogY_pin = 3; //VRx
 const int analogSwitch_pin = 4;
 
+const int analog_press = 4;
+
 //possible range of analog stick values
 #define STICK_MIN 0
 #define STICK_MAX 1023
 
 #define CONNECTION_RATE 9600 //rate of servant module
 
-void setup() {
+void setup() 
+{
   Serial.begin(9600);
   btModule.begin(CONNECTION_RATE);
 
@@ -78,10 +81,11 @@ void loop() {
 
   String x = scaleAnalog(analogRead(analogX_pin));
   String y = scaleAnalog(analogRead(analogY_pin));
-  String throttleMsg = encodeNumbers("T" + x + "," + y);
+  String z = scaleAnalog(analogRead(analog_press));
+  String throttleMsg = encodeNumbers("T" + x + ", " + y + ", " + z);
 
   Serial.println("X: " + x + ", Y: " + y + "| encoded: " + throttleMsg);
   sendString(throttleMsg);
   
-  delay(50);
+  delay(500);
 }
