@@ -1,4 +1,4 @@
 # CS362-Hovercraft
 Arduino controlled Hovercrafts
 
-For [Initial Page Writeup](https://docs.google.com/a/uic.edu/document/d/1u3M5voNZq3Pz_dSWL6FbEP58WjNN0htOGeksJYIGNs4/edit?usp=sharing) - Only Internal UIC.EDU google users can see this at the moment.
+[Google Drive link to documentation](https://drive.google.com/drive/folders/0B225k-tkv4ugSzdKR01GR2txQU0?usp=sharing)
